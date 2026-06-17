@@ -202,6 +202,13 @@ a:hover {
   font-weight: 700;
   color: var(--brand);
   letter-spacing: -0.02em;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.powered-brand:hover {
+  color: var(--brand-dark);
+  text-decoration: underline;
 }
 
 /* Filters */
