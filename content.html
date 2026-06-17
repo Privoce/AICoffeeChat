@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harborview University — Student Videos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-mark">HV</span>
+        <span class="logo-text">Harborview University</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <a href="index.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Students
+    </a>
+    <a href="content.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Content
+    </a>
+    <a href="#" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Inbox
+    </a>
+    <a href="#" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      Sign Up
+    </a>
+  </nav>
+
+  <main class="container">
+    <section class="page-header page-header--compact">
+      <div class="page-header-text">
+        <h1>Student videos</h1>
+        <p class="subtitle">Short-form videos pulled straight from your school's <strong>Instagram</strong> and <strong>TikTok</strong> accounts, surfaced here for prospective students.</p>
+      </div>
+      <div class="powered-by">
+        <span class="powered-label">Powered by</span>
+        <strong class="powered-brand">AICoffeeChat</strong>
+      </div>
+    </section>
+
+    <section class="content-toolbar">
+      <div class="search-group">
+        <label for="search-title" class="visually-hidden">Search title</label>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-title" placeholder="Search title" autocomplete="off" />
+      </div>
+
+      <div class="filters filters--inline">
+        <div class="filter-group">
+          <label for="filter-topic">Topic</label>
+          <select id="filter-topic">
+            <option value="">All topics</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-study">Area of Study</label>
+          <select id="filter-study">
+            <option value="">All areas</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-sort">Sort</label>
+          <select id="filter-sort">
+            <option value="newest">Date published (newest)</option>
+            <option value="oldest">Date published (oldest)</option>
+          </select>
+        </div>
+        <button type="button" class="clear-filters" id="clear-filters" hidden>Clear</button>
+      </div>
+    </section>
+
+    <p class="results-count" id="results-count"></p>
+
+    <section class="video-grid" id="video-grid" aria-live="polite"></section>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No videos match your search. Try different filters or keywords.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Reposted from student Instagram &amp; TikTok accounts · <a href="index.html">Book a coffee chat</a></p>
+  </footer>
+
+  <div class="video-modal" id="video-modal" hidden>
+    <div class="video-modal-backdrop" data-close-modal></div>
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="video-modal-close" data-close-modal aria-label="Close">&times;</button>
+      <div class="video-modal-player-wrap">
+        <video id="modal-video" controls playsinline poster=""></video>
+      </div>
+      <div class="video-modal-body">
+        <div class="video-modal-meta">
+          <span class="platform-badge" id="modal-platform"></span>
+          <time id="modal-date"></time>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-snippet"></p>
+        <a href="#" id="modal-external" class="external-link" target="_blank" rel="noopener">View original on <span id="modal-platform-name"></span> →</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="videos.js"></script>
+  <script src="shared.js"></script>
+  <script src="content.js"></script>
+</body>
+</html>
